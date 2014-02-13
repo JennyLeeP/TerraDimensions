@@ -5,8 +5,9 @@ import net.minecraftforge.common.DimensionManager;
 import com.cyborgJenn.terraDimensions.blocks.ModBlocks;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockMalaStone1;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraGravel;
-import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraTreeTypes;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraSand;
+import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraTreeTypes;
+import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockVerdantLogs;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockVerdantStone1;
 import com.cyborgJenn.terraDimensions.world.TMalaWorldProvider;
 import com.cyborgJenn.terraDimensions.world.TVerdantWorldProvider;
@@ -61,9 +62,9 @@ public class Registry {
 		GameRegistry.registerBlock(ModBlocks.malaStone1, ItemBlockMalaStone1.class, ModBlocks.malaStone1.getUnlocalizedName());
 		GameRegistry.registerBlock(ModBlocks.verdantStone1, ItemBlockVerdantStone1.class, ModBlocks.verdantStone1.getUnlocalizedName());
 		// Tree Blocks
-		//GameRegistry.registerBlock(ModBlocks.verdantLogs, ModBlocks.verdantLogs.getUnlocalizedName());
+		GameRegistry.registerBlock(ModBlocks.verdantLogs, ModBlocks.verdantLogs.getUnlocalizedName());
 		//GameRegistry.registerBlock(ModBlocks.malaLogs, ModBlocks.malaLogs.getUnlocalizedName());
-		//GameRegistry.registerBlock(ModBlocks.terraLeaves, ItemBlockTerraTreeTypes.class,ModBlocks.terraLeaves.getUnlocalizedName());
+		GameRegistry.registerBlock(ModBlocks.terraLeaves, ModBlocks.terraLeaves.getUnlocalizedName());
 		//GameRegistry.registerBlock(ModBlocks.terraPlanks, ItemBlockTerraTreeTypes.class, ModBlocks.terraPlanks.getUnlocalizedName());
 		//GameRegistry.registerBlock(ModBlocks.terraSaplings, ItemBlockTerraTreeTypes.class, ModBlocks.terraSaplings.getUnlocalizedName());
 		// Plants & Vines

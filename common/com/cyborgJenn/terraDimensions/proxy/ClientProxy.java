@@ -1,5 +1,13 @@
 package com.cyborgJenn.terraDimensions.proxy;
 
-public class ClientProxy extends CommonProxy{
+import net.minecraft.client.Minecraft;
 
+public class ClientProxy extends CommonProxy{
+	@SuppressWarnings("static-access")
+    @Override
+	public boolean getGraphicsLevel()
+	{
+		// TODO Auto-generated method stub
+		return Minecraft.getMinecraft().isFancyGraphicsEnabled();
+	}
 }

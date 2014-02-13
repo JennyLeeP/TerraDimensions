@@ -57,10 +57,10 @@ public class ModBlocks {
 		verdantStone1 = new BlockVerdantStone1().setBlockName("verdantStone1");
 		// Tree Blocks
 		verdantLogs = new BlockVerdantLogs().setBlockName("verdantLogs");
-		malaLogs = new BlockVerdantLogs().setBlockName("verdantLogs");
+		//malaLogs = new BlockVerdantLogs().setBlockName("verdantLogs");
 		terraLeaves= new BlockTerraLeaves().setBlockName("terraLeaves");
-		terraPlanks = new BlockTerraPlanks().setBlockName("terraPlanks");
-		terraSaplings = new BlockTerraSaplings().setBlockName("terraSaplings");
+		//terraPlanks = new BlockTerraPlanks().setBlockName("terraPlanks");
+		//terraSaplings = new BlockTerraSaplings().setBlockName("terraSaplings");
 		// Plants & Vines
 		
 		// Ores Vanilla

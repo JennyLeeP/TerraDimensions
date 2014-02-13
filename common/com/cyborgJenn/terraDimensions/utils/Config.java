@@ -8,6 +8,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 
 public class Config {
+	public static boolean enableTreeParticles;
 	//Debug 
 	public static boolean enableDebugNaming;
     // Dimension ID
@@ -58,7 +59,7 @@ public class Config {
 	}
     private static void configBlocks(Configuration config) {
 		String configBlocks = "********Blocks********";
-		
+		enableTreeParticles = config.get(configBlocks, "Enable Tree Particles", true).getBoolean(true);
     }
 	private static void configDebug(Configuration config){
         String debug = "Debug";

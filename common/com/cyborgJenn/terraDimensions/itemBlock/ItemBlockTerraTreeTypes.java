@@ -8,7 +8,7 @@ public class ItemBlockTerraTreeTypes extends ItemTerraDimensionsBlock{
 		super(par1);
         setMaxDamage(0);
         setHasSubtypes(true);
-        MetaNames = new String[]{"brilliant","icebound", "calignous","necrosis"};
+        MetaNames = new String[]{"sparkling","charred","brilliant", "dark", "icebound", "infernal", "life"};
 	}
 
 }
