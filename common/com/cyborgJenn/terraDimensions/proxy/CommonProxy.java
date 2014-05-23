@@ -6,5 +6,8 @@ public class CommonProxy {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	public void registerRenderers() {
+		// TODO Auto-generated method stub
+		
+	}
 }

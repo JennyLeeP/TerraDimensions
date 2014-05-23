@@ -1,0 +1,5 @@
+{
+   "bunnyBegA": {"category": "master","sounds": [{"name": "bunnyBegA","stream": false}]},
+   "bunnyBegB": {"category": "master","sounds": [{"name": "bunnyBegB","stream": false}]},
+   "bunnyRelease": {"category": "master","sounds": [{"name": "bunnyRelease","stream": false}]}
+   }

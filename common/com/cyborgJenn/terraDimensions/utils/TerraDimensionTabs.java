@@ -1,5 +1,7 @@
 package com.cyborgJenn.terraDimensions.utils;
 
+import com.cyborgJenn.terraDimensions.Items.ModItems;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,16 +13,10 @@ public class TerraDimensionTabs extends CreativeTabs {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	//TODO: public ItemStack getIconItemStack()
-	public ItemStack getIconItemStack() 
-	{
-		return null;
-	}
+	
 	@Override
 	public Item getTabIconItem() {
-		// TODO Auto-generated method stub
-		return null;
+		return ModItems.itemActiveMalaPortalKey;
 	}
 
 }

@@ -21,7 +21,7 @@ public class BlockVerdantStone1 extends Block{
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
     
-    String[] StoneTypes2 = {"verdantstone","verdantcobble","verdantmossycobble", 
+    String[] StoneTypes2 = {"verdantcobble","verdantmossycobble", 
     						"verdantstonebrick", "verdantchiseledbrick",
     						"verdantcrackedbrick","verdantmossbrick", "granite",
     						"granitebrick","marble","marblebrick"};

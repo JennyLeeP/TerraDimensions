@@ -20,8 +20,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockVerdantLogs extends Block{
 	
-	public static final String[] TerraWoodType = new String[] {"sparkling","brilliant","icebound", "life"};
-    public static final String[] TerraTreeTextureTops = new String[] {"sparkling_top","brilliant_top","icebound_top", "life_top"};
+	public static final String[] VerdantWoodType = new String[] {"sparkling","brilliant","icebound", "life"};
+    public static final String[] VerdantTreeTextureTops = new String[] {"sparkling_top","brilliant_top","icebound_top", "life_top"};
     
     @SideOnly(Side.CLIENT)
     private IIcon[] iconArrayTS;
@@ -34,6 +34,7 @@ public class BlockVerdantLogs extends Block{
 		super(Material.wood);
 		this.setCreativeTab(TerraDimensions.tabTerraDimensions);
 		this.setHarvestLevel("axe", 2);
+		this.setHardness(3.0F);
         //blockFireSpreadSpeed[this.blockID] = 5;
         //blockFlammability[this.blockID] = 20;
 	}
@@ -41,9 +42,9 @@ public class BlockVerdantLogs extends Block{
 	/**
      * Determines the damage on the item the block drops. Used in cloth and wood.
      */
-    public int damageDropped(int par1)
+    public int damageDropped(int meta)
     {
-        return par1 & 3;
+        return meta & 3;
     }
 	
     /**
@@ -93,7 +94,7 @@ public class BlockVerdantLogs extends Block{
      */
     public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, @SuppressWarnings("rawtypes") List par3List)
     {
-        for(int i = 0; i < TerraWoodType.length; i++){
+        for(int i = 0; i < VerdantWoodType.length; i++){
         par3List.add(new ItemStack(par1, 1, i));
         }
         
@@ -101,16 +102,16 @@ public class BlockVerdantLogs extends Block{
 	@SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconregister)
     {
-		this.iconArrayTS = new IIcon[TerraWoodType.length];
-        this.iconArrayTT = new IIcon[TerraTreeTextureTops.length];
+		this.iconArrayTS = new IIcon[VerdantWoodType.length];
+        this.iconArrayTT = new IIcon[VerdantTreeTextureTops.length];
         
         for (int j = 0; j < this.iconArrayTT.length; ++j)
         {
-            this.iconArrayTT[j] = iconregister.registerIcon(Reference.TEXTURE + "log_" +TerraTreeTextureTops[j]);
+            this.iconArrayTT[j] = iconregister.registerIcon(Reference.TEXTURE + "log_" +VerdantTreeTextureTops[j]);
         }
         for (int i = 0; i < this.iconArrayTS.length; ++i)
         {
-            this.iconArrayTS[i] = iconregister.registerIcon(Reference.TEXTURE + "log_" +TerraWoodType[i]);
+            this.iconArrayTS[i] = iconregister.registerIcon(Reference.TEXTURE + "log_" +VerdantWoodType[i]);
         }
     }
 	
