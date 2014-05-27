@@ -25,13 +25,14 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 import com.cyborgJenn.terraDimensions.blocks.ModBlocks;
 import com.cyborgJenn.terraDimensions.world.generators.WorldGenCursedNodes;
 import com.cyborgJenn.terraDimensions.world.generators.WorldGenFlowersTD;
+import com.cyborgJenn.terraDimensions.world.generators.WorldGenMethIce;
 
 public class BiomeDecoratorVerdant extends BiomeDecorator{
 	public WorldGenerator dirtGen;
     public WorldGenerator gravelGen;
     public WorldGenerator plantYellowGen;
     public WorldGenerator plantRedGen;
-    //public WorldGenerator methIceGen = new WorldGenMethIce(4);
+    public WorldGenerator methIceGen;
 
     public WorldGenerator Solarium;
     public WorldGenerator Quartz;
@@ -90,7 +91,7 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
         //this.sandGen = new WorldGenDLSand(7, ModBlocks.dreamFalling.blockID,0);
         this.dirtGen = new WorldGenMinable(ModBlocks.verdantDirt, 0, 32, ModBlocks.verdantStone);
         this.gravelGen = new WorldGenMinable(ModBlocks.terraGravel, 1, 32, ModBlocks.verdantStone);
-
+        this.methIceGen = new WorldGenMethIce(4);
         //this.Solarium = new WorldGenMinable(ModBlocks.oreBlocks.blockID, 0, 6, ModBlocks.dreamStone.blockID);
         //this.Quartz = new WorldGenMinable(ModBlocks.oreBlocks.blockID,1 , 8, ModBlocks.dreamStone.blockID); 
         //this.BlackTourmaline = new WorldGenMinable(ModBlocks.oreBlocks.blockID,2 , 6, ModBlocks.dreamStone.blockID);
