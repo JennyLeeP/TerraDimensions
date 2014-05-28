@@ -24,8 +24,9 @@ public class BlockTerraDimensions extends Block{
 		
 		if (type == 0){ // Gate Blocks
 			this.setStepSound(Block.soundTypeStone);
-			this.setLightLevel(1.0F);
+			//this.setLightLevel(1.0F);
 			this.setHardness(1.0F);
+			this.setHarvestLevel("pickaxe", 3);
 			this.setResistance(100.0F);// resistance to tnt
 			
 		} else if (type == 1){ // Stone Blocks

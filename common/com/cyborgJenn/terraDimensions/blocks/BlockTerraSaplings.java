@@ -18,6 +18,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 import com.cyborgJenn.terraDimensions.TerraDimensions;
+import com.cyborgJenn.terraDimensions.render.TerraFenceRender;
 import com.cyborgJenn.terraDimensions.utils.Config;
 import com.cyborgJenn.terraDimensions.utils.Reference;
 import com.cyborgJenn.terraDimensions.world.generators.trees.WorldGenBigSparklingTree;
@@ -238,5 +239,5 @@ public class BlockTerraSaplings extends BlockSapling implements IGrowable{
     {
         return par1World.getBlock(chunkX, par3, par4) == this && (par1World.getBlockMetadata(chunkX, par3, par4) & 7) == par5;
     }
-
+    
 }

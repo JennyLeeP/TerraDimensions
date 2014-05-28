@@ -1,10 +1,11 @@
-package com.cyborgJenn.terraDimensions.blocks;
+package com.cyborgJenn.terraDimensions.blocks.portal;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -17,19 +18,25 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 import com.cyborgJenn.terraDimensions.TerraDimensions;
-import com.cyborgJenn.terraDimensions.blocks.portal.TerraVerdantTeleporter;
+import com.cyborgJenn.terraDimensions.blocks.ModBlocks;
 import com.cyborgJenn.terraDimensions.utils.Config;
+import com.cyborgJenn.terraDimensions.utils.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockVerdantPortal extends BlockPortal{
-	public BlockVerdantPortal() { // Par1 = which portal, 0 = verdant, 1 = mala, 2 = galifrey
+	public BlockVerdantPortal() { 
         super();
         //Material.portal;
         this.setCreativeTab(TerraDimensions.tabTerraDimensions);
         this.setTickRandomly(true);
         this.setLightLevel(1.0F);
+    }
+	@SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister p_149651_1_)
+    {
+        this.blockIcon = p_149651_1_.registerIcon(Reference.TEXTURE + "portalVerdant");
     }
 	@SideOnly(Side.CLIENT)
 	/**
@@ -41,6 +48,7 @@ public class BlockVerdantPortal extends BlockPortal{
 
         if (world.provider.isSurfaceWorld() && world.getGameRules().getGameRuleBooleanValue("doMobSpawning") && rand.nextInt(2000) < world.difficultySetting.getDifficultyId())
         {
+        	/*
             int l;
 
             for (l = par3; !World.doesBlockHaveSolidTopSurface(world, par2, l, par4) && l > 0; --l)
@@ -57,6 +65,45 @@ public class BlockVerdantPortal extends BlockPortal{
                     entity.timeUntilPortal = entity.getPortalCooldown();
                 }
             }
+            */
+        }
+    }
+	/**
+     * A randomly called display update to be able to add particles or other items for display
+     */
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
+    {
+        if (p_149734_5_.nextInt(300) == 0)
+        {
+            p_149734_1_.playSound((double)p_149734_2_ + 0.5D, (double)p_149734_3_ + 0.5D, (double)p_149734_4_ + 0.5D, "portal.portal", 0.2F, p_149734_5_.nextFloat() * 0.4F + 0.8F, false);
+        }
+
+        for (int l = 0; l < 4; ++l)
+        {
+            double d0 = (double)((float)p_149734_2_ + p_149734_5_.nextFloat());
+            double d1 = (double)((float)p_149734_3_ + p_149734_5_.nextFloat());
+            double d2 = (double)((float)p_149734_4_ + p_149734_5_.nextFloat());
+            double d3 = 0.0D;
+            double d4 = 0.0D;
+            double d5 = 0.0D;
+            int i1 = p_149734_5_.nextInt(2) * 2 - 1;
+            d3 = ((double)p_149734_5_.nextFloat() - 0.5D) * 0.5D;
+            d4 = ((double)p_149734_5_.nextFloat() - 0.5D) * 0.5D;
+            d5 = ((double)p_149734_5_.nextFloat() - 0.5D) * 0.5D;
+
+            if (p_149734_1_.getBlock(p_149734_2_ - 1, p_149734_3_, p_149734_4_) != this && p_149734_1_.getBlock(p_149734_2_ + 1, p_149734_3_, p_149734_4_) != this)
+            {
+                d0 = (double)p_149734_2_ + 0.5D + 0.25D * (double)i1;
+                d3 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
+            }
+            else
+            {
+                d2 = (double)p_149734_4_ + 0.5D + 0.25D * (double)i1;
+                d5 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
+            }
+
+            p_149734_1_.spawnParticle("portal", d0, d1, d2, d3, d4, d5);
         }
     }
     /**
@@ -90,11 +137,11 @@ public class BlockVerdantPortal extends BlockPortal{
         else if (thePlayer.dimension != Config.dimensionVerdantID)
         {
                 thePlayer.timeUntilPortal = 10;
-                thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Config.dimensionVerdantID, new TerraVerdantTeleporter(thePlayer.mcServer.worldServerForDimension(Config.dimensionVerdantID)));
+                thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Config.dimensionVerdantID, new TerraVerdantTeleporter(thePlayer.mcServer.worldServerForDimension(Config.dimensionVerdantID), Config.dimensionVerdantID));
         }
         else {
                 thePlayer.timeUntilPortal = 10;
-                thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TerraVerdantTeleporter(thePlayer.mcServer.worldServerForDimension(0)));
+                thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TerraVerdantTeleporter(thePlayer.mcServer.worldServerForDimension(0), Config.dimensionVerdantID));
         }
         }
 
@@ -174,8 +221,8 @@ public class BlockVerdantPortal extends BlockPortal{
         {
             this.field_150867_a = p_i45415_1_;
             this.field_150865_b = p_i45415_5_;
-            this.field_150863_d = BlockPortal.field_150001_a[p_i45415_5_][0];
-            this.field_150866_c = BlockPortal.field_150001_a[p_i45415_5_][1];
+            this.field_150863_d = BlockVerdantPortal.field_150001_a[p_i45415_5_][0];
+            this.field_150866_c = BlockVerdantPortal.field_150001_a[p_i45415_5_][1];
 
             for (int i1 = p_i45415_3_; p_i45415_3_ > i1 - 21 && p_i45415_3_ > 0 && this.func_150857_a(p_i45415_1_.getBlock(p_i45415_2_, p_i45415_3_ - 1, p_i45415_4_)); --p_i45415_3_)
             {
@@ -220,14 +267,14 @@ public class BlockVerdantPortal extends BlockPortal{
 
                 Block block1 = this.field_150867_a.getBlock(p_150853_1_ + j1 * i1, p_150853_2_ - 1, p_150853_3_ + k1 * i1);
 
-                if (block1 != Blocks.obsidian)
+                if (block1 != ModBlocks.gateVerdant)
                 {
                     break;
                 }
             }
 
             block = this.field_150867_a.getBlock(p_150853_1_ + j1 * i1, p_150853_2_, p_150853_3_ + k1 * i1);
-            return block == Blocks.obsidian ? i1 : 0;
+            return block == ModBlocks.gateVerdant ? i1 : 0;
         }
 
         protected int func_150858_a()
@@ -244,8 +291,8 @@ public class BlockVerdantPortal extends BlockPortal{
 
                 for (j = 0; j < this.field_150868_h; ++j)
                 {
-                    k = this.field_150861_f.posX + j * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
-                    l = this.field_150861_f.posZ + j * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
+                    k = this.field_150861_f.posX + j * Direction.offsetX[BlockVerdantPortal.field_150001_a[this.field_150865_b][1]];
+                    l = this.field_150861_f.posZ + j * Direction.offsetZ[BlockVerdantPortal.field_150001_a[this.field_150865_b][1]];
                     Block block = this.field_150867_a.getBlock(k, i, l);
 
                     if (!this.func_150857_a(block))
@@ -253,25 +300,25 @@ public class BlockVerdantPortal extends BlockPortal{
                         break label56;
                     }
 
-                    if (block == Blocks.portal)
+                    if (block == ModBlocks.verdantPortal)
                     {
                         ++this.field_150864_e;
                     }
 
                     if (j == 0)
                     {
-                        block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][0]]);
+                        block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockVerdantPortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockVerdantPortal.field_150001_a[this.field_150865_b][0]]);
 
-                        if (block != Blocks.obsidian)
+                        if (block != ModBlocks.gateVerdant)
                         {
                             break label56;
                         }
                     }
                     else if (j == this.field_150868_h - 1)
                     {
-                        block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]]);
+                        block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockVerdantPortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockVerdantPortal.field_150001_a[this.field_150865_b][1]]);
 
-                        if (block != Blocks.obsidian)
+                        if (block != ModBlocks.gateVerdant)
                         {
                             break label56;
                         }
@@ -281,11 +328,11 @@ public class BlockVerdantPortal extends BlockPortal{
 
             for (i = 0; i < this.field_150868_h; ++i)
             {
-                j = this.field_150861_f.posX + i * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
+                j = this.field_150861_f.posX + i * Direction.offsetX[BlockVerdantPortal.field_150001_a[this.field_150865_b][1]];
                 k = this.field_150861_f.posY + this.field_150862_g;
-                l = this.field_150861_f.posZ + i * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
+                l = this.field_150861_f.posZ + i * Direction.offsetZ[BlockVerdantPortal.field_150001_a[this.field_150865_b][1]];
 
-                if (this.field_150867_a.getBlock(j, k, l) != Blocks.obsidian)
+                if (this.field_150867_a.getBlock(j, k, l) != ModBlocks.gateVerdant)
                 {
                     this.field_150862_g = 0;
                     break;
@@ -307,7 +354,7 @@ public class BlockVerdantPortal extends BlockPortal{
 
         protected boolean func_150857_a(Block p_150857_1_)
         {
-            return p_150857_1_.getMaterial() == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == Blocks.portal;
+            return p_150857_1_.getMaterial() == Material.air || p_150857_1_ == Blocks.fire || p_150857_1_ == ModBlocks.verdantPortal;
         }
 
         public boolean func_150860_b()
@@ -325,7 +372,7 @@ public class BlockVerdantPortal extends BlockPortal{
                 for (int l = 0; l < this.field_150862_g; ++l)
                 {
                     int i1 = this.field_150861_f.posY + l;
-                    this.field_150867_a.setBlock(j, i1, k, Blocks.portal, this.field_150865_b, 2);
+                    this.field_150867_a.setBlock(j, i1, k, ModBlocks.verdantPortal, this.field_150865_b, 2);
                 }
             }
         }

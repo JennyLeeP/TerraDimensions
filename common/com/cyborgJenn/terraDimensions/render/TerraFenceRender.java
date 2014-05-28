@@ -98,7 +98,6 @@ public class TerraFenceRender implements ISimpleBlockRenderingHandler{
 
 	@Override
 	public boolean shouldRender3DInInventory(int modelId) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }

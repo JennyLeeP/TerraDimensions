@@ -11,14 +11,14 @@ import com.cyborgJenn.terraDimensions.blocks.ModBlocks;
 
 public class WorldGenMethIce extends WorldGenerator{
 	/** The block ID for clay. */
-    private Block methaneBlockId;
+    private Block methaneIceBlock;
 
     /** The number of blocks to generate. */
     private int numberOfBlocks;
 
     public WorldGenMethIce(int par1)
     {
-        this.methaneBlockId = ModBlocks.bogg;
+        this.methaneIceBlock = ModBlocks.bogg;
         this.numberOfBlocks = par1;
     }
 
@@ -48,7 +48,7 @@ public class WorldGenMethIce extends WorldGenerator{
 
                             if (j2 == ModBlocks.verdantDirt || j2 == ModBlocks.bogg)
                             {
-                                par1World.setBlock(i1, i2, j1, this.methaneBlockId, 0, 2);
+                                par1World.setBlock(i1, i2, j1, this.methaneIceBlock, 0, 2);
                             }
                         }
                     }

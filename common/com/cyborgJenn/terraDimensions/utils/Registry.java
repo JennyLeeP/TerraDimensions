@@ -17,14 +17,16 @@ import com.cyborgJenn.terraDimensions.handlers.RecipeHandler;
 import com.cyborgJenn.terraDimensions.handlers.TerraEventHandler;
 import com.cyborgJenn.terraDimensions.handlers.TerraFuelHandler;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockMalaLogs;
-import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockMalaStone1;
+import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockMalaStoneSet1;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraFlowers;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraGravel;
+import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraOreSet1;
+import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraOreSet2;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraSand;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraWalls;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockTerraWood;
 import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockVerdantLogs;
-import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockVerdantStone1;
+import com.cyborgJenn.terraDimensions.itemBlock.ItemBlockVerdantStoneSet1;
 import com.cyborgJenn.terraDimensions.village.VillagerTrades;
 import com.cyborgJenn.terraDimensions.world.TMalaWorldProvider;
 import com.cyborgJenn.terraDimensions.world.TVerdantWorldProvider;
@@ -81,10 +83,10 @@ public class Registry {
 		GameRegistry.registerBlock(ModBlocks.terraGravel, ItemBlockTerraGravel.class, ModBlocks.terraGravel.getUnlocalizedName());
 		// Stone Blocks
 		GameRegistry.registerBlock(ModBlocks.verdantStone, ModBlocks.verdantStone.getUnlocalizedName());
-		GameRegistry.registerBlock(ModBlocks.verdantStone1, ItemBlockVerdantStone1.class, ModBlocks.verdantStone1.getUnlocalizedName());
+		GameRegistry.registerBlock(ModBlocks.verdantStone1, ItemBlockVerdantStoneSet1.class, ModBlocks.verdantStone1.getUnlocalizedName());
 		
 		GameRegistry.registerBlock(ModBlocks.malaStone, ModBlocks.malaStone.getUnlocalizedName());
-		GameRegistry.registerBlock(ModBlocks.malaStone1, ItemBlockMalaStone1.class, ModBlocks.malaStone1.getUnlocalizedName());
+		GameRegistry.registerBlock(ModBlocks.malaStone1, ItemBlockMalaStoneSet1.class, ModBlocks.malaStone1.getUnlocalizedName());
 		/* Tree and Wood Blocks */
 		GameRegistry.registerBlock(ModBlocks.verdantLogs, ItemBlockVerdantLogs.class, ModBlocks.verdantLogs.getUnlocalizedName());
 		GameRegistry.registerBlock(ModBlocks.malaLogs, ItemBlockMalaLogs.class, ModBlocks.malaLogs.getUnlocalizedName());
@@ -94,6 +96,7 @@ public class Registry {
 		/* Misc Block */
 		GameRegistry.registerBlock(ModBlocks.chalk, ModBlocks.chalk.getUnlocalizedName());
 		GameRegistry.registerBlock(ModBlocks.shells, ModBlocks.shells.getUnlocalizedName());
+		GameRegistry.registerBlock(ModBlocks.cursedStone, ModBlocks.cursedStone.getUnlocalizedName());
 		// Plants & Vines
 		GameRegistry.registerBlock(ModBlocks.terraFlowers, ItemBlockTerraFlowers.class, ModBlocks.terraFlowers.getUnlocalizedName());
 		GameRegistry.registerBlock(ModBlocks.sphagnumMoss, ModBlocks.sphagnumMoss.getUnlocalizedName());
@@ -102,7 +105,8 @@ public class Registry {
 		GameRegistry.registerBlock(ModBlocks.terraWalls, ItemBlockTerraWalls.class, ModBlocks.terraWalls.getUnlocalizedName());
 		GameRegistry.registerBlock(ModBlocks.terraFences, ItemBlockTerraWood.class, ModBlocks.terraFences.getUnlocalizedName());
 		// Ores Vanilla
-
+		GameRegistry.registerBlock(ModBlocks.terraOreSet1, ItemBlockTerraOreSet1.class, ModBlocks.terraOreSet1.getUnlocalizedName());
+		GameRegistry.registerBlock(ModBlocks.terraOreSet2, ItemBlockTerraOreSet2.class, ModBlocks.terraOreSet2.getUnlocalizedName());
 		// Ores TerraDimensions
 
 		// Ores Mod Support

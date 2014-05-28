@@ -8,12 +8,16 @@ import com.cyborgJenn.terraDimensions.blocks.BlockTerraSaplings;
 import com.cyborgJenn.terraDimensions.blocks.ModBlocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
+import net.minecraftforge.event.terraingen.InitMapGenEvent;
+import net.minecraftforge.event.terraingen.InitMapGenEvent.EventType;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
@@ -64,5 +68,12 @@ public class TerraEventHandler {
 		return null;
 
 
+	}
+	@EventHandler
+	public void onMineshaftGeneration(InitMapGenEvent event){
+		World world = Minecraft.getMinecraft().theWorld;
+		if (event.type == EventType.MINESHAFT){
+			System.out.println("Generated Mineshaft");
+		}
 	}
 }

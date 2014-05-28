@@ -13,6 +13,7 @@ import com.cyborgJenn.terraDimensions.render.RenderPurpleSlimer;
 import com.cyborgJenn.terraDimensions.render.RenderSonicCreeper;
 import com.cyborgJenn.terraDimensions.render.RenderSpud;
 import com.cyborgJenn.terraDimensions.render.TerraFenceRender;
+import com.cyborgJenn.terraDimensions.render.TerraGrassRenderer;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -37,6 +38,7 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerEntityRenderingHandler(EntityPurpleSlimer.class, new RenderPurpleSlimer(new ModelSlime(16), new ModelSlime(0), 0.25F));
 
 		RenderingRegistry.registerBlockHandler(new TerraFenceRender());
+		RenderingRegistry.registerBlockHandler(new TerraGrassRenderer());
 		//ClientRegistry.bindTileEntitySpecialRenderer(TileChickenAlter.class, new RenderChickenAlter());
 	}
 }

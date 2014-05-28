@@ -16,16 +16,16 @@ import com.cyborgJenn.terraDimensions.utils.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMalaStone1 extends Block{
+public class BlockMalaStoneSet1 extends Block{
 	
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
 
 	String[] StoneTypes1 = {"malacobble","bloodcobble", 
 			"malastonebrick", "malachiseledbrick",
-			"malacrackedbrick","bloodbrick", "cursedstone"};
+			"malacrackedbrick","bloodbrick"};
 
-	public BlockMalaStone1() {
+	public BlockMalaStoneSet1() {
 		super(Material.rock);
 		this.setStepSound(Block.soundTypeStone);
 		this.setCreativeTab(TerraDimensions.tabTerraDimensions);

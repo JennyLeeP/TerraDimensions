@@ -7,6 +7,7 @@ import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.Ev
 import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SAND_PASS2;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.COAL;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.DIAMOND;
+import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.CUSTOM;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.DIRT;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.GOLD;
 import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.GRAVEL;
@@ -26,6 +27,7 @@ import com.cyborgJenn.terraDimensions.blocks.ModBlocks;
 import com.cyborgJenn.terraDimensions.world.generators.WorldGenCursedNodes;
 import com.cyborgJenn.terraDimensions.world.generators.WorldGenFlowersTD;
 import com.cyborgJenn.terraDimensions.world.generators.WorldGenMethIce;
+import com.cyborgJenn.terraDimensions.world.generators.WorldGenTDSand;
 
 public class BiomeDecoratorVerdant extends BiomeDecorator{
 	public WorldGenerator dirtGen;
@@ -34,7 +36,23 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
     public WorldGenerator plantRedGen;
     public WorldGenerator methIceGen;
 
-    public WorldGenerator Solarium;
+    public WorldGenerator iron;
+    public WorldGenerator gold;
+    public WorldGenerator diamond;
+    public WorldGenerator emerald;
+    public WorldGenerator lapis;
+    public WorldGenerator redStone;
+    public WorldGenerator coal;
+    
+    public WorldGenerator copper;
+    public WorldGenerator tin;
+    public WorldGenerator silver;
+    public WorldGenerator lead;
+    public WorldGenerator ferrous;
+    public WorldGenerator uranium;
+    public WorldGenerator aluminum;
+    public WorldGenerator apatite;
+    
     public WorldGenerator Quartz;
     public WorldGenerator BlackTourmaline;
     public WorldGenerator Carnelian;
@@ -88,11 +106,34 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
         super();
         //this.plantYellowGen = new WorldGenDLFlowers(Block.plantYellow.blockID);
         //this.plantRedGen = new WorldGenDLFlowers(Block.plantRed.blockID);
-        //this.sandGen = new WorldGenDLSand(7, ModBlocks.dreamFalling.blockID,0);
+        this.sandGen = new WorldGenTDSand(7, ModBlocks.terraSand,0);
         this.dirtGen = new WorldGenMinable(ModBlocks.verdantDirt, 0, 32, ModBlocks.verdantStone);
-        this.gravelGen = new WorldGenMinable(ModBlocks.terraGravel, 1, 32, ModBlocks.verdantStone);
+        this.gravelGen = new WorldGenMinable(ModBlocks.terraGravel, 0, 32, ModBlocks.verdantStone);
         this.methIceGen = new WorldGenMethIce(4);
-        //this.Solarium = new WorldGenMinable(ModBlocks.oreBlocks.blockID, 0, 6, ModBlocks.dreamStone.blockID);
+        
+        
+        /* Vanilla Ores  - Block placed, int meta, int number , Block target */
+        
+        this.iron = new WorldGenMinable(ModBlocks.terraOreSet1, 0, 6, ModBlocks.verdantStone);
+        this.gold = new WorldGenMinable(ModBlocks.terraOreSet1, 1, 6, ModBlocks.verdantStone);
+        this.diamond = new WorldGenMinable(ModBlocks.terraOreSet1, 2, 6, ModBlocks.verdantStone);
+        this.lapis = new WorldGenMinable(ModBlocks.terraOreSet1, 3, 6, ModBlocks.verdantStone);
+        this.emerald = new WorldGenMinable(ModBlocks.terraOreSet1, 4, 6, ModBlocks.verdantStone);
+        this.redStone = new WorldGenMinable(ModBlocks.terraOreSet1, 5, 6, ModBlocks.verdantStone);
+        this.coal = new WorldGenMinable(ModBlocks.terraOreSet1, 6, 6, ModBlocks.verdantStone);
+        
+        /* Modded Ores  - Block placed, int meta, int number , Block target */
+        
+        this.copper = new WorldGenMinable(ModBlocks.terraOreSet2, 0, 8, ModBlocks.verdantStone);
+        this.tin = new WorldGenMinable(ModBlocks.terraOreSet2, 1, 8, ModBlocks.verdantStone);
+        this.silver = new WorldGenMinable(ModBlocks.terraOreSet2, 2, 8, ModBlocks.verdantStone);
+        this.lead = new WorldGenMinable(ModBlocks.terraOreSet2, 3, 8, ModBlocks.verdantStone);
+        this.ferrous = new WorldGenMinable(ModBlocks.terraOreSet2, 4, 4, ModBlocks.verdantStone);
+        this.uranium = new WorldGenMinable(ModBlocks.terraOreSet2, 5, 1, ModBlocks.verdantStone);
+        this.aluminum = new WorldGenMinable(ModBlocks.terraOreSet2, 6, 6, ModBlocks.verdantStone);
+        this.apatite = new WorldGenMinable(ModBlocks.terraOreSet2, 7, 12, ModBlocks.verdantStone);
+        
+        
         //this.Quartz = new WorldGenMinable(ModBlocks.oreBlocks.blockID,1 , 8, ModBlocks.dreamStone.blockID); 
         //this.BlackTourmaline = new WorldGenMinable(ModBlocks.oreBlocks.blockID,2 , 6, ModBlocks.dreamStone.blockID);
         //this.Carnelian = new WorldGenMinable(ModBlocks.oreBlocks.blockID,3 , 6, ModBlocks.dreamStone.blockID);
@@ -101,7 +142,7 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
         //this.Rubelite = new WorldGenMinable(ModBlocks.oreBlocks.blockID,6 , 6, ModBlocks.dreamStone.blockID);
         //this.Azurite = new WorldGenMinable(ModBlocks.oreBlocks.blockID,7 , 6, ModBlocks.dreamStone.blockID);
 
-        this.cursedNodesGen = new WorldGenCursedNodes(ModBlocks.verdantStone1, 11);
+        this.cursedNodesGen = new WorldGenCursedNodes(ModBlocks.cursedStone, ModBlocks.gateGalifrey, 0);
         this.whiteFlowersGen = new WorldGenFlowersTD(ModBlocks.terraFlowers,0);
         this.orangeFlowersGen = new WorldGenFlowersTD(ModBlocks.terraFlowers,1);
         this.magentaFlowersGen = new WorldGenFlowersTD(ModBlocks.terraFlowers,2);
@@ -166,6 +207,7 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
             k = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
             this.sandGen.generate(this.currentWorld, this.randomGenerator, j, this.currentWorld.getTopSolidOrLiquidBlock(j, k), k);
         }
+        
         doGen = TerrainGen.decorate(currentWorld, randomGenerator, chunk_X, chunk_Z, SAND_PASS2);
         for (i = 0; doGen && i < this.sandPerChunk2; ++i)
         {
@@ -173,15 +215,16 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
             k = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
             this.sandGen.generate(this.currentWorld, this.randomGenerator, j, this.currentWorld.getTopSolidOrLiquidBlock(j, k), k);
         }
+        
         doGen = TerrainGen.decorate(currentWorld, randomGenerator, chunk_X, chunk_Z, CLAY);
         for (i = 0; doGen && i < this.methIcePerChunk; ++i)
         {
             j = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
             k = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-            //this.methIceGen.generate(this.currentWorld, this.randomGenerator, j, this.currentWorld.getTopSolidOrLiquidBlock(j, k), k);
+            this.methIceGen.generate(this.currentWorld, this.randomGenerator, j, this.currentWorld.getTopSolidOrLiquidBlock(j, k), k);
         }
+        
         i = this.treesPerChunk;
-
         if (this.randomGenerator.nextInt(10) == 0)
         {
             ++i;
@@ -344,7 +387,13 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
      */
     protected void genStandardOre1(int par1, WorldGenerator par2WorldGenerator, int par3, int par4)
     {
-        
+    	for (int l = 0; l < par1; ++l)
+        {
+            int i1 = this.chunk_X + this.randomGenerator.nextInt(16);
+            int j1 = this.randomGenerator.nextInt(par4 - par3) + par3;
+            int k1 = this.chunk_Z + this.randomGenerator.nextInt(16);
+            par2WorldGenerator.generate(this.currentWorld, this.randomGenerator, i1, j1, k1);
+        }
     }
 
     /**
@@ -352,7 +401,13 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
      */
     protected void genStandardOre2(int par1, WorldGenerator par2WorldGenerator, int par3, int par4)
     {
-        
+    	for (int l = 0; l < par1; ++l)
+        {
+            int i1 = this.chunk_X + this.randomGenerator.nextInt(16);
+            int j1 = this.randomGenerator.nextInt(par4) + this.randomGenerator.nextInt(par4) + (par3 - par4);
+            int k1 = this.chunk_Z + this.randomGenerator.nextInt(16);
+            par2WorldGenerator.generate(this.currentWorld, this.randomGenerator, i1, j1, k1);
+        }
     }
     /**
      * Generates ores in the current chunk
@@ -364,18 +419,40 @@ public class BiomeDecoratorVerdant extends BiomeDecorator{
         this.genStandardOre1(20, this.dirtGen, 0, 256);
         if (TerrainGen.generateOre(currentWorld, randomGenerator, gravelGen, chunk_X, chunk_Z, GRAVEL))
         this.genStandardOre1(10, this.gravelGen, 0, 256);
-        if (TerrainGen.generateOre(currentWorld, randomGenerator, coalGen, chunk_X, chunk_Z, COAL))
-        this.genStandardOre1(20, this.coalGen, 0, 128);
-        if (TerrainGen.generateOre(currentWorld, randomGenerator, ironGen, chunk_X, chunk_Z, IRON))
-        this.genStandardOre1(20, this.ironGen, 0, 64);
-        if (TerrainGen.generateOre(currentWorld, randomGenerator, goldGen, chunk_X, chunk_Z, GOLD))
-        this.genStandardOre1(2, this.goldGen, 0, 32);
-        if (TerrainGen.generateOre(currentWorld, randomGenerator, redstoneGen, chunk_X, chunk_Z, REDSTONE))
-        this.genStandardOre1(8, this.redstoneGen, 0, 16);
-        if (TerrainGen.generateOre(currentWorld, randomGenerator, diamondGen, chunk_X, chunk_Z, DIAMOND))
-        this.genStandardOre1(1, this.diamondGen, 0, 16);
-        if (TerrainGen.generateOre(currentWorld, randomGenerator, lapisGen, chunk_X, chunk_Z, LAPIS))
-        this.genStandardOre2(1, this.lapisGen, 16, 16);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, coal, chunk_X, chunk_Z, CUSTOM))
+        this.genStandardOre1(20, this.coal, 0, 128);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, iron, chunk_X, chunk_Z, CUSTOM))
+        this.genStandardOre1(20, this.iron, 0, 64);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, gold, chunk_X, chunk_Z, CUSTOM))
+        this.genStandardOre1(2, this.gold, 0, 32);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, redStone, chunk_X, chunk_Z, CUSTOM))
+        this.genStandardOre1(8, this.redStone, 0, 16);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, diamond, chunk_X, chunk_Z, CUSTOM))
+        this.genStandardOre1(1, this.diamond, 0, 16);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, lapis, chunk_X, chunk_Z, CUSTOM))
+        this.genStandardOre2(1, this.lapis, 16, 16);
+        
+        /* 
+         * Mod Ore spawns set according to :
+         * http://ftbwiki.org/Ore - if changes are needed to match FTB in the future : remind me I may have forgotten.
+         */
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, copper, chunk_X, chunk_Z, CUSTOM))
+            this.genStandardOre1(12, this.copper, 40, 75);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, tin, chunk_X, chunk_Z, CUSTOM))
+            this.genStandardOre1(9, this.tin, 20, 55);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, silver, chunk_X, chunk_Z, CUSTOM))
+            this.genStandardOre1(4, this.silver, 5, 30);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, lead, chunk_X, chunk_Z, CUSTOM))
+            this.genStandardOre1(4, this.lead, 2, 35);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, ferrous, chunk_X, chunk_Z, CUSTOM))
+            this.genStandardOre1(2, this.ferrous, 5, 20);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, uranium, chunk_X, chunk_Z, CUSTOM))
+            this.genStandardOre1(4, this.uranium, 0, 64);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, aluminum, chunk_X, chunk_Z, CUSTOM))
+            this.genStandardOre1(2, this.aluminum, 0, 128);
+        if (TerrainGen.generateOre(currentWorld, randomGenerator, apatite, chunk_X, chunk_Z, CUSTOM))
+            this.genStandardOre1(4, this.apatite, 30, 128);
+        
         MinecraftForge.ORE_GEN_BUS.post(new OreGenEvent.Post(currentWorld, randomGenerator, chunk_X, chunk_Z));
     }
 }

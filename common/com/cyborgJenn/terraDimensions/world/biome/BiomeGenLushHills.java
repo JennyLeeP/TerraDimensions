@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.cyborgJenn.terraDimensions.blocks.ModBlocks;
+import com.cyborgJenn.terraDimensions.world.generators.trees.WorldGenBrilliantTrees;
+import com.cyborgJenn.terraDimensions.world.generators.trees.WorldGenMangroveTrees;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -12,11 +14,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenTrees;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class BiomeGenLushHills extends BiomeGenBase{
+public class BiomeGenLushHills extends BiomeGenTDBase{
 
 	private BiomeDecoratorVerdant customBiomeDecorator;
 
@@ -24,31 +30,58 @@ public class BiomeGenLushHills extends BiomeGenBase{
 		super(par1);
 		theBiomeDecorator = new BiomeDecoratorVerdant(this);
 		customBiomeDecorator = (BiomeDecoratorVerdant)theBiomeDecorator;
-		this.topBlock = (Block) ModBlocks.verdantGrass;
-		this.field_150604_aj = 1;// TopBlock MetaValue
-		this.fillerBlock = (Block) ModBlocks.verdantDirt;
 		this.rootHeight = 2.0F;// -2 to 2
 		this.heightVariation = 1.0F;
 		this.temperature = 0.2F;
 		this.rainfall = 0.3F;
-		this.setColor(8900670);
+		this.enableRain = false;
 		this.waterColorMultiplier = 8900670;
+		/* Entities and Animals */
 		this.spawnableCreatureList.clear();
 		this.spawnableMonsterList.clear();
-		//this.spawnableMonsterList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
 		//this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
 		//this.spawnableCreatureList.add(new SpawnListEntry(EntitySonicCreeper.class, 10, 1, 2));
 		//this.spawnableWaterCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
 		this.spawnableCaveCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
-		this.enableRain = false;
+		/* Trees and Plants */
 		this.worldGeneratorTrees = new WorldGenTrees(false);
-		//this.customBiomeDecorator.blueFlowersPerChunk = 3;
-		//this.customBiomeDecorator.grayFlowersPerChunk = 2;
-		//this.customBiomeDecorator.purpleFlowersPerChunk = 3;
-		//this.customBiomeDecorator.treesPerChunk = 7;
-		//this.customBiomeDecorator.nodesPerChunk = 3;
+		this.customBiomeDecorator.whiteFlowersPerChunk = 3;
+		this.customBiomeDecorator.grayFlowersPerChunk = 2;
+		this.customBiomeDecorator.purpleFlowersPerChunk = 3;
+		this.customBiomeDecorator.treesPerChunk = 7;
+		this.customBiomeDecorator.nodesPerChunk = 3;
 	}
+	public void genTerrainBlocks(World world, Random rand, Block[] block, byte[] blockArray, int p_150573_5_, int p_150573_6_, double p_150573_7_)
+    {      
+            this.topBlock = ModBlocks.verdantGrass;
+            this.field_150604_aj = 0;//TopBlock Meta
+            this.fillerBlock = ModBlocks.verdantDirt;
+
+        this.genCustomBiomeTerrain(world, rand, block, blockArray, p_150573_5_, p_150573_6_, p_150573_7_);
+    }
 	
+    /**
+     * Allocate a new BiomeDecorator for this BiomeGenBase
+     */
+    @Override
+    public BiomeDecorator createBiomeDecorator()
+    {   
+        return getModdedBiomeDecorator(new BiomeDecoratorVerdant(this));
+    }
+    
+    public WorldGenAbstractTree func_150567_a(Random p_150567_1_)
+    {
+        return this.worldGeneratorTrees;
+    }
+    /**
+     * Gets a WorldGen appropriate for this biome. Use this method to add World Gen items to certain Biomes.
+     */
+    public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
+    {
+        //return null;
+    	return (WorldGenerator)(par1Random.nextInt(10) == 4 ? new WorldGenMangroveTrees(false) : (par1Random.nextInt(2) == 0 ? new WorldGenShrub(3, 0) : (par1Random.nextInt(3) == 0 ? new WorldGenBrilliantTrees(false) : new WorldGenMangroveTrees(true))));
+    }
 	/**
 	 * Provides the basic foliage color based on the biome temperature and rainfall
 	 */

@@ -1,5 +1,8 @@
 package com.cyborgJenn.terraDimensions.blocks;
 
+import com.cyborgJenn.terraDimensions.blocks.portal.BlockGalifreyPortal;
+import com.cyborgJenn.terraDimensions.blocks.portal.BlockMalaPortal;
+import com.cyborgJenn.terraDimensions.blocks.portal.BlockVerdantPortal;
 import com.cyborgJenn.terraDimensions.utils.Config;
 import com.cyborgJenn.terraDimensions.utils.Reference;
 import com.cyborgJenn.terraDimensions.utils.ReferenceBlock;
@@ -7,6 +10,7 @@ import com.cyborgJenn.terraDimensions.utils.Registry;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockGrass;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.Fluid;
 
@@ -16,9 +20,9 @@ public class ModBlocks {
 	public static Block gateMala;
 	public static Block gateGalifrey;
 	public static BlockVerdantPortal verdantPortal;
-	public static Block malaPortal;
-	public static Block galifreyPortal;
-	public static Block verdantGrass;
+	public static BlockMalaPortal malaPortal;
+	public static BlockGalifreyPortal galifreyPortal;
+	public static BlockVerdantGrass verdantGrass;
 	public static Block malaGrass;
 	public static Block galifreyGrass;
 	public static Block verdantDirt;
@@ -45,6 +49,9 @@ public class ModBlocks {
 	public static Block sphagnumMoss;
 	public static Block shells;
 	public static Block beachGrass;
+	public static Block cursedStone;
+	public static Block terraOreSet1;
+	public static Block terraOreSet2;
 
 	public static void initBlocks(){
 		// Gate Blocks
@@ -53,10 +60,10 @@ public class ModBlocks {
 		gateGalifrey = new BlockTerraDimensions(0, Material.rock).setBlockName("gateGalifrey");
 		// Portal Blocks
 		verdantPortal = (BlockVerdantPortal) new BlockVerdantPortal().setBlockName("verdantPortal");
-		malaPortal = new BlockMalaPortal().setBlockName("malaPortal");
-		galifreyPortal = new BlockGalifreyPortal().setBlockName("galifreyPortal");
+		malaPortal = (BlockMalaPortal) new BlockMalaPortal().setBlockName("malaPortal");
+		galifreyPortal = (BlockGalifreyPortal) new BlockGalifreyPortal().setBlockName("galifreyPortal");
 		// Grass Blocks
-		verdantGrass = new BlockVerdantGrass(0).setBlockName("verdantGrass");
+		verdantGrass = (BlockVerdantGrass) new BlockVerdantGrass(0).setBlockName("grass");
 		malaGrass = new BlockMalaGrass(0).setBlockName("malaGrass");
 		galifreyGrass = new BlockGalifreyGrass(0).setBlockName("galifreyGrass");
 		beachGrass = new BlockBeachGrass().setBlockName("beachGrass");
@@ -70,17 +77,18 @@ public class ModBlocks {
 		terraSand = new BlockTerraSand().setBlockName("terraSand");
 		terraGravel = new BlockTerraGravel().setBlockName("terraGravel");
 		/* Stone Blocks */
-		verdantStone = new BlockTerraDimensions(1, Material.rock).setBlockName("verdantStone_alt");
-		verdantStone1 = new BlockVerdantStone1().setBlockName("verdantStone1");
+		verdantStone = new BlockTerraDimensions(1, Material.rock).setBlockName("verdantStone_alt2");
+		verdantStone1 = new BlockVerdantStoneSet1().setBlockName("verdantStone1");
 		
-		malaStone = new BlockTerraDimensions(1, Material.rock).setBlockName("malaStone");
-		malaStone1 = new BlockMalaStone1().setBlockName("malaStone1");
+		malaStone = new BlockTerraDimensions(1, Material.rock).setBlockName("verdantStone_alt");
+		malaStone1 = new BlockMalaStoneSet1().setBlockName("malaStone1");
 		
 		galifreyStone = new BlockTerraDimensions(1, Material.rock).setBlockName("galifreyStone");
 		
 		/* Misc Blocks */
 		chalk = new BlockChalk().setBlockName("chalk");
 		shells = new BlockShells().setBlockName("shells");
+		cursedStone = new BlockCursedStone().setBlockName("cursedStone");
 		/* Fences and Walls */
 		terraWalls = new BlockTerraWall(verdantStone1).setBlockName("terraWalls");
 		terraFences = new BlockTerraFences().setBlockName("terraFences");
@@ -96,7 +104,8 @@ public class ModBlocks {
 		sphagnumMoss = new BlockSphagnumMoss().setBlockName("sphagnumMoss");
 		
 		// Ores Vanilla
-		
+		terraOreSet1 = new BlockTerraOreSet1().setBlockName("terraOreSet1");
+		terraOreSet2 = new BlockTerraOreSet2().setBlockName("terraOreSet2");
 		// Ores TerraDimensions
 		
 		// Ores Mod Support

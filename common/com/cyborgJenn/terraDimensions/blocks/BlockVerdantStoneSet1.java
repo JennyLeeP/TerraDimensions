@@ -16,7 +16,7 @@ import com.cyborgJenn.terraDimensions.utils.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockVerdantStone1 extends Block{
+public class BlockVerdantStoneSet1 extends Block{
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -26,7 +26,7 @@ public class BlockVerdantStone1 extends Block{
     						"verdantcrackedbrick","verdantmossbrick", "granite",
     						"granitebrick","marble","marblebrick"};
     
-	protected BlockVerdantStone1() {
+	protected BlockVerdantStoneSet1() {
 		super(Material.rock);
 		this.setStepSound(Block.soundTypeStone);
 		this.setCreativeTab(TerraDimensions.tabTerraDimensions);

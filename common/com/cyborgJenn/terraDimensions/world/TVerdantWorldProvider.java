@@ -18,7 +18,9 @@ import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.common.DimensionManager;
 
 public class TVerdantWorldProvider extends WorldProvider{
+	
 	IRenderHandler skyRenderer;
+	
 	@Override
 	public String getDimensionName() {
 		return "TerraVerdant";

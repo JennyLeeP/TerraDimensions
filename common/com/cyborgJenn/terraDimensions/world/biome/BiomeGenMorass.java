@@ -6,9 +6,13 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 import com.cyborgJenn.terraDimensions.blocks.ModBlocks;
+import com.cyborgJenn.terraDimensions.world.generators.trees.WorldGenBigSparklingTree;
+import com.cyborgJenn.terraDimensions.world.generators.trees.WorldGenBrilliantTrees;
+import com.cyborgJenn.terraDimensions.world.generators.trees.WorldGenMangroveTrees;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -64,8 +68,8 @@ public class BiomeGenMorass extends BiomeGenTDBase{
      */
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-        return null;
-    	//return (WorldGenerator)(par1Random.nextInt(10) == 4 ? new WorldGenBigSparklingTree(false) : (par1Random.nextInt(2) == 0 ? new WorldGenShrub(3, 0) : (par1Random.nextInt(3) == 0 ? new WorldGenBrilliantTrees(false) : new WorldGenBigSparklingTree(true))));
+        //return null;
+    	return (WorldGenerator)(par1Random.nextInt(10) == 4 ? new WorldGenMangroveTrees(false) : (par1Random.nextInt(2) == 0 ? new WorldGenShrub(3, 0) : (par1Random.nextInt(3) == 0 ? new WorldGenBrilliantTrees(false) : new WorldGenMangroveTrees(true))));
     }
     /**
      * Provides the basic foliage color based on the biome temperature and rainfall
