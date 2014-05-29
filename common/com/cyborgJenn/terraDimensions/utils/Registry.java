@@ -100,36 +100,37 @@ public class Registry {
 		// Plants & Vines
 		GameRegistry.registerBlock(ModBlocks.terraFlowers, ItemBlockTerraFlowers.class, ModBlocks.terraFlowers.getUnlocalizedName());
 		GameRegistry.registerBlock(ModBlocks.sphagnumMoss, ModBlocks.sphagnumMoss.getUnlocalizedName());
+		GameRegistry.registerBlock(ModBlocks.terraVines, ModBlocks.terraVines.getUnlocalizedName());
 		
 		/* Walls and Fences */
 		GameRegistry.registerBlock(ModBlocks.terraWalls, ItemBlockTerraWalls.class, ModBlocks.terraWalls.getUnlocalizedName());
 		GameRegistry.registerBlock(ModBlocks.terraFences, ItemBlockTerraWood.class, ModBlocks.terraFences.getUnlocalizedName());
-		// Ores Vanilla
+		
+		/* Stairs */
+        GameRegistry.registerBlock(ModBlocks.sparklingStairs, ModBlocks.sparklingStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(ModBlocks.charredStairs, ModBlocks.charredStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(ModBlocks.brilliantStairs, ModBlocks.brilliantStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(ModBlocks.darkStairs, ModBlocks.darkStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(ModBlocks.iceboundStairs, ModBlocks.iceboundStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(ModBlocks.infernalStairs, ModBlocks.infernalStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(ModBlocks.lifeStairs, ModBlocks.lifeStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(ModBlocks.deathStairs, ModBlocks.deathStairs.getUnlocalizedName());
+        
+        /* Slabs */
+		//GameRegistry.registerBlock(ModBlocks.blockWoodSlabsSet1, ModBlocks.blockWoodStairsSet1.getUnlocalizedName());
+        //GameRegistry.registerBlock(ModBlocks.blockStoneSlabsSet1, ModBlocks.blockStoneSlabsSet1.getUnlocalizedName());
+        //GameRegistry.registerBlock(ModBlocks.blockWoodDBLSlabs, ModBlocks.blockWoodDBLSlabs.getUnlocalizedName());
+        //GameRegistry.registerBlock(ModBlocks.blockStoneDBLSlabs, ModBlocks.blockStoneDBLSlabs.getUnlocalizedName());
+        
+		/* Ores */
 		GameRegistry.registerBlock(ModBlocks.terraOreSet1, ItemBlockTerraOreSet1.class, ModBlocks.terraOreSet1.getUnlocalizedName());
 		GameRegistry.registerBlock(ModBlocks.terraOreSet2, ItemBlockTerraOreSet2.class, ModBlocks.terraOreSet2.getUnlocalizedName());
-		// Ores TerraDimensions
-
-		// Ores Mod Support
-		/*
-        GameRegistry.registerBlock(ModBlocks.oreLucidity, "OreLucidity");
-        GameRegistry.registerBlock(ModBlocks.oreBlocks, ItemDreamOres.class, "oreBlocks");
-        GameRegistry.registerBlock(ModBlocks.dreamCobble, "Dream_Cobble");
-        GameRegistry.registerBlock(ModBlocks.dreamStairs, "Dream_Stairs");
-        /*
-        
-        //GameRegistry.registerBlock(ModBlocks.dreamWoodSlabs, ItemDreamSlabs.class, "Dream_Wood_Slabs");
-        //GameRegistry.registerBlock(ModBlocks.dreamStoneSlabs, ItemDreamStoneSlabs.class, "Dream_Stone_Slabs");
-        //GameRegistry.registerBlock(ModBlocks.dreamWoodDBLSlabs, ItemDreamSlabs.class, "Dream_Wood_DBL_Slabs");
-        //GameRegistry.registerBlock(ModBlocks.dreamStoneDBLSlabs, ItemDreamStoneSlabs.class, "Dream_Stone_DBL_Slabs");
-        GameRegistry.registerBlock(ModBlocks.nmCobble, "NM_Cobble");
-        GameRegistry.registerBlock(ModBlocks.nmStairs, "NM_Stairs");
-        GameRegistry.registerBlock(ModBlocks.bloodStairs, "Blood_Stairs");
-        GameRegistry.registerBlock(ModBlocks.oreMethaneClathrate, "Ore_Methane_Clathrate");
-        */
-        
-        /*
-        GameRegistry.registerBlock(ModBlocks.chickenAlter, "Chicken_Alter");
-		 */
+		GameRegistry.registerBlock(ModBlocks.oreMethaneClathrate, ModBlocks.oreMethaneClathrate.getUnlocalizedName());
+		
+		/* Tile Entities */
+        //GameRegistry.registerBlock(ModBlocks.pedestal, ModBlocks.pedestal.getUnlocalizedName());
+		 
+		
 		System.out.println("[TerraDimensions] " + "Block Register Complete.............");
 	}
 	/*
